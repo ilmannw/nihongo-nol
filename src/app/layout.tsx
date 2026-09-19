@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, Noto_Sans_JP } from "next/font/google";
+import { ClerkProvider } from "@clerk/nextjs";
 import "./globals.css";
 
 const jakartaSans = Plus_Jakarta_Sans({
@@ -30,9 +31,13 @@ export default function RootLayout({
       className={`${jakartaSans.variable} ${notoJp.variable} h-full antialiased scroll-smooth`}
     >
       <body className="min-h-full flex flex-col font-sans bg-[#0f172a] text-slate-100 selection:bg-rose-500 selection:text-white">
-        {children}
+        <ClerkProvider>
+          {children}
+        </ClerkProvider>
       </body>
     </html>
   );
 }
+
+
 
